@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbtest-deployment
+  labels:
+    app: dbtest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dbtest
+  template:
+    metadata:
+      labels:
+        app: dbtest
+    spec:
+      containers:
+      - name: dbtest
+        image: youracr.azurecr.io/dbtest:latest
+        ports:
+        - containerPort: 8080
